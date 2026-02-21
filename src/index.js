@@ -3,7 +3,10 @@ import * as Vue from 'vue/dist/vue.esm-bundler.js'
     template: `
         <button v-on:click="increment">Increment</button>
         <p>{{ count }}</p>
-        <div v-for="number in evenList">
+        <div 
+            v-for="number in numbers"
+            v-bind:class="getClass(number)"
+        >
             <div> 
                 {{ number }} 
             </div>
@@ -21,6 +24,9 @@ import * as Vue from 'vue/dist/vue.esm-bundler.js'
         }
     },
     methods: {
+        getClass(number) {
+            return this.isEven(number) ? 'blue' : 'red'
+        },
         increment() {
             this.count += 1
         },
