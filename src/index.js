@@ -5,9 +5,16 @@ import * as Vue from 'vue/dist/vue.esm-bundler.js'
         <p>{{ count }}</p>
         
         <input 
-            v-bind:value="value"
-            v-on:input="input" 
+            type="checkbox"
+            v-model="value"
+            value="a"
         />
+        <input 
+            type="checkbox"
+            v-model="value"
+            value="b"
+        />
+        {{ value }}
         <div class="red">
             <p>{{ error }}</p>
         </div>
@@ -24,7 +31,7 @@ import * as Vue from 'vue/dist/vue.esm-bundler.js'
     data() {
       return {
         count: 0,
-        value: 'user',
+        value: ['a'],
         numbers: [1,2,3,4,5,6,7,8,9,10],
       }
     },
@@ -39,10 +46,6 @@ import * as Vue from 'vue/dist/vue.esm-bundler.js'
         }
     },
     methods: {
-        input($event) {
-            //console.log($event.target.value)
-            this.value = $event.target.value 
-        },
         getClass(number) {
             return this.isEven(number) ? 'blue' : 'red'
         },
