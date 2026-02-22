@@ -1,5 +1,8 @@
 <template>
-    <my-input name="Username"/>
+    <my-input 
+        name="Username"
+        :rules="{ required: true, min: 5}"
+    />
     <my-button 
         background="darkslateblue"
         color="white"
