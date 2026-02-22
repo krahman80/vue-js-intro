@@ -1,4 +1,5 @@
 <template>
+    <my-input name="Username"/>
     <my-button 
         background="darkslateblue"
         color="white"
@@ -8,10 +9,12 @@
 
 <script>
 import MyButton from './MyButton.vue'
+import MyInput from './MyInput.vue'
 
 export default {
     components: {
-        MyButton
+        MyButton,
+        MyInput
     },
     data() {
         return {
