@@ -5,7 +5,8 @@
      </div>
      <input 
        :id="name" 
-       v-model="value"
+       :value="value"
+       @input="input"
        />
 </template>
 
@@ -16,6 +17,10 @@ export default {
             type: String,
             required: true
         },
+        value: {
+            type: String,
+            required: true
+        },
         rules: {
             //min:number
             //required: true
@@ -23,9 +28,12 @@ export default {
             default: {}
         }
     },
-    data() {
-        return {
-            value: ''
+    methods: {
+        input($event) {
+            this.$emit('update', {
+                name: this.name.toLowerCase(),
+                value: $event.target.value,
+            })
         }
     },
     computed: {
@@ -34,7 +42,7 @@ export default {
                 return `Value is required.`
             }
             if (this.rules.min && this.value.length < this.rules.min) {
-                return `The min lenght is ${this.rules.min}.`
+                return `The min length is ${this.rules.min}.`
             }
         }
     }
