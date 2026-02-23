@@ -3,12 +3,14 @@
         name="Username"
         :rules="{ required: true, min: 5}"
         :value="username.value"
+        :error="username.error"
         @update="update"
     />
     <my-input 
         name="Password"
         :rules="{ required: true, min: 10}"
         :value="password.value"
+        :error="password.error"
         @update="update"
     />
     <my-button 
@@ -32,17 +34,18 @@ export default {
             valid: true,
             username: {
                 value:'user',
-                valid: false
+                error: ''
             },
             password: {
                 value:'pass',
-                valid: false
+                error: ''
             }
         }
     },
     methods: {
-        update({name, value}) {
+        update({name, value, error}) {
             this[name].value = value
+            this[name].error = error
         }
     }
 }
